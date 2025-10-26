@@ -1,0 +1,232 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --panel: rgba(20, 32, 54, 0.95);
+  --accent: #8f60ff;
+  --accent-soft: rgba(143, 96, 255, 0.3);
+  --text: #f1f5ff;
+  --muted: #92a1c6;
+  --border: rgba(128, 152, 195, 0.3);
+  --success: #60ffb0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(98, 0, 255, 0.3), transparent 60%),
+              radial-gradient(circle at bottom right, rgba(0, 183, 255, 0.2), transparent 55%),
+              var(--bg);
+  color: var(--text);
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(143, 96, 255, 0.18), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.panel:hover::after {
+  opacity: 1;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.stat-block + .stat-block {
+  margin-top: 1rem;
+}
+
+.stat-title {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.stat-value {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+}
+
+.bar {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0.2);
+  transform-origin: left;
+  background: linear-gradient(90deg, rgba(143, 96, 255, 0.6), rgba(96, 255, 212, 0.85));
+  transition: transform 0.8s ease;
+}
+
+.bar[data-percent]::before {
+  transform: scaleX(var(--percent));
+}
+
+.repo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.repo {
+  padding: 0.75rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, border 0.25s ease;
+}
+
+.repo:hover {
+  transform: translateY(-4px);
+  border-color: rgba(143, 96, 255, 0.5);
+}
+
+.repo a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.repo-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.weather {
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.weather strong {
+  color: var(--success);
+}
+
+.uptime-card {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.quote {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  min-height: 3.5rem;
+}
+
+.loading-bar {
+  margin-top: 1.25rem;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-progress {
+  height: 100%;
+  width: 35%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255, 89, 182, 0.8), rgba(143, 96, 255, 0.9));
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(143, 96, 255, 0.8);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translateX(-5%) scaleX(0.6); }
+  50% { transform: translateX(80%) scaleX(1.3); }
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.placeholder {
+  color: var(--muted);
+  text-align: center;
+  padding: 1rem;
+}
+
+.app-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 2.1rem;
+  }
+
+  .panel {
+    padding: 1.1rem;
+  }
+}

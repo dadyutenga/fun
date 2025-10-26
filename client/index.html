@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Command Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>Dev Command Center</h1>
+      <p class="subtitle">Monitor your systems, repos, and vibes in one place.</p>
+      <div class="uptime" id="uptime"></div>
+    </header>
+
+    <main class="grid">
+      <section class="panel" id="system-panel">
+        <h2>System Status</h2>
+        <div class="stat-block">
+          <span class="stat-title">CPU Load</span>
+          <div class="bar" data-stat="cpu"></div>
+          <p class="stat-value" id="cpu-stats">Loading...</p>
+        </div>
+        <div class="stat-block">
+          <span class="stat-title">Memory Usage</span>
+          <div class="bar" data-stat="memory"></div>
+          <p class="stat-value" id="memory-stats">Loading...</p>
+        </div>
+        <div class="stat-block">
+          <span class="stat-title">Disk Usage</span>
+          <div class="bar" data-stat="disk"></div>
+          <p class="stat-value" id="disk-stats">Loading...</p>
+        </div>
+        <p class="system-meta" id="system-meta"></p>
+      </section>
+
+      <section class="panel" id="github-panel">
+        <h2>Recent GitHub Activity</h2>
+        <ul class="repo-list" id="repo-list">
+          <li class="placeholder">Fetching repositories...</li>
+        </ul>
+      </section>
+
+      <section class="panel" id="weather-panel">
+        <h2>Weather & VPS Uptime</h2>
+        <div class="weather" id="weather"></div>
+        <div class="uptime-card">
+          <h3>VPS Uptime</h3>
+          <p id="system-uptime">...</p>
+          <p id="process-uptime" class="muted"></p>
+        </div>
+      </section>
+
+      <section class="panel" id="motivation-panel">
+        <h2>Motivation Booster</h2>
+        <div class="quote" id="quote">Loading wisdom...</div>
+        <div class="loading-bar">
+          <div class="loading-progress" id="loading-progress"></div>
+        </div>
+        <p class="muted">Rotating anime-style progress for dramatic flair.</p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Tip: Configure environment variables to customize GitHub and weather data.</p>
+    </footer>
+  </div>
+
+  <script src="main.js" type="module"></script>
+</body>
+</html>
