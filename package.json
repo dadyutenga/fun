@@ -1,0 +1,11 @@
+{
+  "name": "dev-command-center",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A lightweight dashboard for monitoring system stats, GitHub activity, weather, and motivation.",
+  "scripts": {
+    "start": "node server/src/index.js"
+  },
+  "keywords": ["dashboard", "monitoring", "github", "weather"],
+  "license": "MIT"
+}
